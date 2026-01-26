@@ -1029,6 +1029,10 @@
         const feature = featureData[slug];
         
         if (feature) {
+          // 更新页面URL但不刷新页面
+          const newUrl = `/en/${slug}`;
+          history.pushState({ slug }, feature.title, newUrl);
+          
           // 更新页面标题和描述
           updatePageInfo(feature);
           
@@ -1066,6 +1070,12 @@
           }
         }
       });
+    });
+    
+    // 添加popstate事件监听器，处理浏览器前进后退
+    window.addEventListener('popstate', function(e) {
+      // 重新初始化页面，根据新的URL显示对应内容
+      initPage();
     });
     
     // 关闭模态框
