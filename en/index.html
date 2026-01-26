@@ -947,9 +947,9 @@
         
         // 根据平台获取显示名称
         const platformName = {
-          'windows-64': 'Windows 64位',
-          'windows-32': 'Windows 32位',
-          'windows-portable': 'Windows 64位便携版'
+          'windows-64': 'Windows 64-bit',
+          'windows-32': 'Windows 32-bit',
+          'windows-portable': 'Windows 64-bit Portable'
         }[feature.platform];
         
         // 添加平台信息到链接
@@ -957,7 +957,7 @@
         
         optionItem.innerHTML = `
           <span class="option-name">${name}</span>
-          <a href="${modifiedUrl}" class="btn btn-blue option-btn" target="_blank" rel="noopener noreferrer nofollow">立即下载</a>
+          <a href="${modifiedUrl}" class="btn btn-blue option-btn" target="_blank" rel="noopener noreferrer nofollow">Download Now</a>
         `;
         
         downloadOptionsContainer.appendChild(optionItem);
@@ -1037,9 +1037,9 @@
             
             // 根据平台获取显示名称
             const platformName = {
-              'windows-64': 'Windows 64位',
-              'windows-32': 'Windows 32位',
-              'windows-portable': 'Windows 64位便携版'
+              'windows-64': 'Windows 64-bit',
+              'windows-32': 'Windows 32-bit',
+              'windows-portable': 'Windows 64-bit Portable'
             }[platform];
             
             // 添加平台信息到链接
