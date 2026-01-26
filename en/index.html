@@ -1018,7 +1018,8 @@
     // 为每个下载按钮添加点击事件
     downloadButtons.forEach(button => {
       button.addEventListener('click', function(e) {
-        // 不移除默认行为，让浏览器正常处理链接点击，这样URL会变化
+        // 阻止默认行为，防止页面跳转
+        e.preventDefault();
         
         // 获取当前平台
         const platform = this.getAttribute('data-platform');
@@ -1028,6 +1029,17 @@
         const feature = featureData[slug];
         
         if (feature) {
+          // 更新页面标题和描述
+          updatePageInfo(feature);
+          
+          // 高亮对应的下载按钮
+          downloadButtons.forEach(btn => {
+            btn.classList.remove('btn-blue');
+            btn.classList.add('btn-outline');
+          });
+          this.classList.remove('btn-outline');
+          this.classList.add('btn-blue');
+          
           // 计算链接数量
           const linkCount = Object.keys(feature.links).length;
           
@@ -1047,6 +1059,10 @@
             
             // 在新窗口打开链接
             window.open(modifiedUrl, '_blank', 'noopener,noreferrer');
+          } else {
+            // 多个链接，生成选项并显示模态框
+            generateDownloadOptions(feature);
+            downloadModal.style.display = 'block';
           }
         }
       });
