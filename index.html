@@ -894,9 +894,9 @@
         title: 'PotPlayer Windows64位下载 | 支持4K/8K/3D格式',
         description: 'PotPlayer Windows64位是一款功能强大的多媒体播放器，支持几乎所有视频格式，提供流畅的播放体验、丰富的自定义选项和全面的字幕支持，支持4K、8K、3D和网络流媒体播放，免费下载使用。',
         links: {
-          '百度网盘': 'https://pan.baidu.com/s/1windows64-baidu-code',
-          '夸克网盘': 'https://pan.quark.cn/s/windows64-quark-code',
-          '迅雷网盘': 'https://pan.xunlei.com/s/windows64-xunlei-code'
+          '百度网盘': 'https://pan.baidu.com/s/1fxJRtGe-KhFwBC3If1vU2Q?pwd=34mq',
+          '夸克网盘': 'https://pan.quark.cn/s/06b483d2eb21',
+          '迅雷网盘': 'https://pan.xunlei.com/s/VOk2DeZgimxHJG4S9766W8vIA1?pwd=55g7#'
         }
       },
       'PotPlayer-windows-32': {
@@ -904,9 +904,9 @@
         title: 'PotPlayer Windows32位下载 | 支持4K/8K/3D格式',
         description: 'PotPlayer Windows32位是一款功能强大的多媒体播放器，支持几乎所有视频格式，提供流畅的播放体验、丰富的自定义选项和全面的字幕支持，支持4K、8K、3D和网络流媒体播放，免费下载使用。',
         links: {
-          '百度网盘': 'https://pan.baidu.com/s/1windows32-baidu-code',
-          '夸克网盘': 'https://pan.quark.cn/s/windows32-quark-code',
-          '迅雷网盘': 'https://pan.xunlei.com/s/windows32-xunlei-code'
+          '百度网盘': 'https://pan.baidu.com/s/1kbzILExVlyGXvIVVzfTZGw?pwd=x3jy',
+          '夸克网盘': 'https://pan.quark.cn/s/77b86d7e7e38',
+          '迅雷网盘': 'https://pan.xunlei.com/s/VOk2DaFJ4GoWiIfA2TUz8Z26A1?pwd=zb3g#'
         }
       },
       'PotPlayer-windows-portable': {
@@ -914,9 +914,9 @@
         title: 'PotPlayer Windows64位便携版下载 | 支持4K/8K/3D格式',
         description: 'PotPlayer Windows64位便携版是一款功能强大的多媒体播放器，无需安装即可使用，支持几乎所有视频格式，提供流畅的播放体验、丰富的自定义选项和全面的字幕支持，支持4K、8K、3D和网络流媒体播放，免费下载使用。',
         links: {
-          '百度网盘': 'https://pan.baidu.com/s/1windowsportable-baidu-code',
-          '夸克网盘': 'https://pan.quark.cn/s/windowsportable-quark-code',
-          '迅雷网盘': 'https://pan.xunlei.com/s/windowsportable-xunlei-code'
+          '百度网盘': 'https://pan.baidu.com/s/1iT9-Js64C_59SudLqfwWXg?pwd=tq6v',
+          '夸克网盘': 'https://pan.quark.cn/s/c162629e2c7c',
+          '迅雷网盘': 'https://pan.xunlei.com/s/VOk2DO7lowfKpS3bPJG3CATDA1?pwd=sk43#'
         }
       }
     };
@@ -952,12 +952,10 @@
           'windows-portable': 'Windows 64位便携版'
         }[feature.platform];
         
-        // 添加平台信息到链接
-        const modifiedUrl = `${url} / ${platformName}`;
-        
+        // 使用原始链接，不添加平台信息
         optionItem.innerHTML = `
           <span class="option-name">${name}</span>
-          <a href="${modifiedUrl}" class="btn btn-blue option-btn" target="_blank" rel="noopener noreferrer nofollow">立即下载</a>
+          <a href="${url}" class="btn btn-blue option-btn" target="_blank" rel="noopener noreferrer nofollow">立即下载</a>
         `;
         
         downloadOptionsContainer.appendChild(optionItem);
@@ -1018,7 +1016,8 @@
     // 为每个下载按钮添加点击事件
     downloadButtons.forEach(button => {
       button.addEventListener('click', function(e) {
-        // 不移除默认行为，让浏览器正常处理链接点击，这样URL会变化
+        // 阻止默认行为，防止页面跳转
+        e.preventDefault();
         
         // 获取当前平台
         const platform = this.getAttribute('data-platform');
@@ -1028,6 +1027,21 @@
         const feature = featureData[slug];
         
         if (feature) {
+          // 更新页面URL但不刷新页面
+          const newUrl = `/${slug}`;
+          history.pushState({ slug }, feature.title, newUrl);
+          
+          // 更新页面标题和描述
+          updatePageInfo(feature);
+          
+          // 高亮对应的下载按钮
+          downloadButtons.forEach(btn => {
+            btn.classList.remove('btn-blue');
+            btn.classList.add('btn-outline');
+          });
+          this.classList.remove('btn-outline');
+          this.classList.add('btn-blue');
+          
           // 计算链接数量
           const linkCount = Object.keys(feature.links).length;
           
@@ -1042,14 +1056,22 @@
               'windows-portable': 'Windows 64位便携版'
             }[platform];
             
-            // 添加平台信息到链接
-            const modifiedUrl = `${firstLink} / ${platformName}`;
-            
+            // 使用原始链接，不添加平台信息
             // 在新窗口打开链接
-            window.open(modifiedUrl, '_blank', 'noopener,noreferrer');
+            window.open(firstLink, '_blank', 'noopener,noreferrer');
+          } else {
+            // 多个链接，生成选项并显示模态框
+            generateDownloadOptions(feature);
+            downloadModal.style.display = 'block';
           }
         }
       });
+    });
+    
+    // 添加popstate事件监听器，处理浏览器前进后退
+    window.addEventListener('popstate', function(e) {
+      // 重新初始化页面，根据新的URL显示对应内容
+      initPage();
     });
     
     // 关闭模态框

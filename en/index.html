@@ -616,7 +616,7 @@
   <!-- 导航栏 -->
   <nav>
     <div class="nav-container">
-      <a href="/" class="nav-logo">
+      <a href="/en/" class="nav-logo">
         <img src="../images/logo.png" alt="PotPlayer" class="nav-logo-img">
       </a>
       <div class="nav-menu">
@@ -894,9 +894,9 @@
         title: 'PotPlayer Windows 64-bit Download | Support 4K/8K/3D Formats',
         description: 'PotPlayer Windows 64-bit is a powerful multimedia player that supports almost all video formats, providing smooth playback experience, rich customization options and comprehensive subtitle support, supporting 4K, 8K, 3D and network streaming playback, free to download and use.',
         links: {
-          'Baidu Netdisk': 'https://pan.baidu.com/s/1windows64-baidu-code',
-          'Quark Netdisk': 'https://pan.quark.cn/s/windows64-quark-code',
-          'Xunlei Netdisk': 'https://pan.xunlei.com/s/windows64-xunlei-code'
+          'Baidu Netdisk': 'https://pan.baidu.com/s/1fxJRtGe-KhFwBC3If1vU2Q?pwd=34mq',
+          'Quark Netdisk': 'https://pan.quark.cn/s/06b483d2eb21',
+          'Xunlei Netdisk': 'https://pan.xunlei.com/s/VOk2DeZgimxHJG4S9766W8vIA1?pwd=55g7#'
         }
       },
       'PotPlayer-windows-32': {
@@ -904,9 +904,9 @@
         title: 'PotPlayer Windows 32-bit Download | Support 4K/8K/3D Formats',
         description: 'PotPlayer Windows 32-bit is a powerful multimedia player that supports almost all video formats, providing smooth playback experience, rich customization options and comprehensive subtitle support, supporting 4K, 8K, 3D and network streaming playback, free to download and use.',
         links: {
-          'Baidu Netdisk': 'https://pan.baidu.com/s/1windows32-baidu-code',
-          'Quark Netdisk': 'https://pan.quark.cn/s/windows32-quark-code',
-          'Xunlei Netdisk': 'https://pan.xunlei.com/s/windows32-xunlei-code'
+          'Baidu Netdisk': 'https://pan.baidu.com/s/1kbzILExVlyGXvIVVzfTZGw?pwd=x3jy',
+          'Quark Netdisk': 'https://pan.quark.cn/s/77b86d7e7e38',
+          'Xunlei Netdisk': 'https://pan.xunlei.com/s/VOk2DaFJ4GoWiIfA2TUz8Z26A1?pwd=zb3g#'
         }
       },
       'PotPlayer-windows-portable': {
@@ -914,9 +914,9 @@
         title: 'PotPlayer Windows 64-bit Portable Download | Support 4K/8K/3D Formats',
         description: 'PotPlayer Windows 64-bit Portable is a powerful multimedia player that can be used without installation, supports almost all video formats, providing smooth playback experience, rich customization options and comprehensive subtitle support, supporting 4K, 8K, 3D and network streaming playback, free to download and use.',
         links: {
-          'Baidu Netdisk': 'https://pan.baidu.com/s/1windowsportable-baidu-code',
-          'Quark Netdisk': 'https://pan.quark.cn/s/windowsportable-quark-code',
-          'Xunlei Netdisk': 'https://pan.xunlei.com/s/windowsportable-xunlei-code'
+          'Baidu Netdisk': 'https://pan.baidu.com/s/1iT9-Js64C_59SudLqfwWXg?pwd=tq6v',
+          'Quark Netdisk': 'https://pan.quark.cn/s/c162629e2c7c',
+          'Xunlei Netdisk': 'https://pan.xunlei.com/s/VOk2DO7lowfKpS3bPJG3CATDA1?pwd=sk43#'
         }
       }
     };
@@ -952,12 +952,10 @@
           'windows-portable': 'Windows 64-bit Portable'
         }[feature.platform];
         
-        // 添加平台信息到链接
-        const modifiedUrl = `${url} / ${platformName}`;
-        
+        // 使用原始链接，不添加平台信息
         optionItem.innerHTML = `
           <span class="option-name">${name}</span>
-          <a href="${modifiedUrl}" class="btn btn-blue option-btn" target="_blank" rel="noopener noreferrer nofollow">Download Now</a>
+          <a href="${url}" class="btn btn-blue option-btn" target="_blank" rel="noopener noreferrer nofollow">Download Now</a>
         `;
         
         downloadOptionsContainer.appendChild(optionItem);
@@ -1058,11 +1056,9 @@
               'windows-portable': 'Windows 64-bit Portable'
             }[platform];
             
-            // 添加平台信息到链接
-            const modifiedUrl = `${firstLink} / ${platformName}`;
-            
+            // 使用原始链接，不添加平台信息
             // 在新窗口打开链接
-            window.open(modifiedUrl, '_blank', 'noopener,noreferrer');
+            window.open(firstLink, '_blank', 'noopener,noreferrer');
           } else {
             // 多个链接，生成选项并显示模态框
             generateDownloadOptions(feature);
