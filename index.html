@@ -647,12 +647,8 @@
       </div>
       <!-- 主banner视频 - Bilibili嵌入 -->
       <div class="hero-screenshot video-container">
-        <!-- 教程文字覆盖层 -->
-        <div class="video-overlay" id="video-overlay">
-          <div class="overlay-text">安装教程</div>
-        </div>
         <!-- Bilibili播放器 -->
-        <iframe id="bilibili-player" src="https://player.bilibili.com/player.html?isOutside=true&aid=115773980874040&bvid=BV1wiB5BzEiV&cid=25933453309&p=1&autoplay=0&loop=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100%; height: 100%; min-height: 300px;"></iframe>
+        <iframe id="bilibili-player" src="//player.bilibili.com/player.html?isOutside=true&aid=115971314424012&bvid=BV1hz6jBwEPT&cid=35660696214&p=1&autoplay=0&loop=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 100%; height: 100%; min-height: 300px;"></iframe>
       </div>
     </header>
 
@@ -864,24 +860,8 @@
       }
     });
     
-    // 视频播放交互
-    const videoContainer = document.querySelector('.video-container');
-    const videoOverlay = document.getElementById('video-overlay');
+    // 视频播放器引用
     const bilibiliPlayer = document.getElementById('bilibili-player');
-    
-    // 点击视频容器隐藏覆盖层
-    videoContainer.addEventListener('click', function() {
-      videoOverlay.classList.add('hidden');
-      
-      // 尝试通过iframe通信播放视频（由于同源策略限制，可能无法直接控制）
-      try {
-        // 这里可以添加与B站播放器通信的代码
-        // 由于浏览器的同源策略，直接控制iframe内的播放器可能会失败
-        console.log('视频已开始播放');
-      } catch (error) {
-        console.log('无法直接控制播放器，用户可手动点击播放');
-      }
-    });
     
     // 下载模态框逻辑
     const downloadModal = document.getElementById('download-modal');
