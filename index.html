@@ -108,7 +108,7 @@
       display: flex;
       justify-content: center;
       gap: 12px;
-      margin-bottom: 40px;
+      margin-bottom: 10px;
     }
     /* 按钮基础样式 */
     .btn {
@@ -644,6 +644,14 @@
         <a href="/PotPlayer-windows-portable" class="btn btn-outline" data-platform="windows-portable" data-title="PotPlayer Windows64位便携版下载 | 支持4K/8K/3D格式" data-description="PotPlayer Windows64位便携版是一款功能强大的多媒体播放器，无需安装即可使用，支持几乎所有视频格式，提供流畅的播放体验、丰富的自定义选项和全面的字幕支持，支持4K、8K、3D和网络流媒体播放，免费下载使用。">
           <i class="fab fa-windows"></i> Windows64位便携版
         </a>
+        <a href="https://all.calipertools.com" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-tools"></i> 所有工具
+        </a>
+      </div>
+      <!-- 最新版本提示 -->
+      <div style="display: flex; justify-content: center; align-items: center; margin: 5px auto 20px;">
+        <i class="fas fa-check-circle" style="color: #4CAF50; margin-right: 8px;"></i>
+        <span style="color: #666;">当前工具是最新版本</span>
       </div>
       <!-- 主banner视频 - Bilibili嵌入 -->
       <div class="hero-screenshot video-container">
@@ -744,6 +752,9 @@
         </a>
         <a href="/PotPlayer-windows-portable" class="btn btn-outline" data-platform="windows-portable" data-title="PotPlayer Windows64位便携版下载 | 支持4K/8K/3D格式" data-description="PotPlayer Windows64位便携版是一款功能强大的多媒体播放器，无需安装即可使用，支持几乎所有视频格式，提供流畅的播放体验、丰富的自定义选项和全面的字幕支持，支持4K、8K、3D和网络流媒体播放，免费下载使用。">
           <i class="fab fa-windows"></i> Windows64位便携版
+        </a>
+        <a href="https://all.calipertools.com" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-tools"></i> 所有工具
         </a>
       </div>
     </section>
@@ -996,6 +1007,11 @@
     // 为每个下载按钮添加点击事件
     downloadButtons.forEach(button => {
       button.addEventListener('click', function(e) {
+        // 检查是否是"所有工具"按钮，如果是则不阻止默认行为
+        if (this.getAttribute('href') === 'https://all.calipertools.com') {
+          return; // 直接返回，不阻止默认行为
+        }
+        
         // 阻止默认行为，防止页面跳转
         e.preventDefault();
         

@@ -108,7 +108,7 @@
       display: flex;
       justify-content: center;
       gap: 12px;
-      margin-bottom: 40px;
+      margin-bottom: 10px;
     }
     /* 按钮基础样式 */
     .btn {
@@ -644,6 +644,14 @@
         <a href="/en/PotPlayer-windows-portable" class="btn btn-outline" data-platform="windows-portable" data-title="PotPlayer Windows 64-bit Portable Download | Support 4K/8K/3D Formats" data-description="PotPlayer Windows 64-bit Portable is a powerful multimedia player that can be used without installation, supports almost all video formats, provides smooth playback experience, rich customization options and comprehensive subtitle support, supporting 4K, 8K, 3D and network streaming playback, free to download and use.">
           <i class="fab fa-windows"></i> Windows 64-bit Portable
         </a>
+        <a href="https://all.calipertools.com" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-tools"></i> All Tools
+        </a>
+      </div>
+      <!-- 最新版本提示 -->
+      <div style="display: flex; justify-content: center; align-items: center; margin: 5px auto 20px;">
+        <i class="fas fa-check-circle" style="color: #4CAF50; margin-right: 8px;"></i>
+        <span style="color: #666;">Current tool is the latest version</span>
       </div>
       <!-- 主banner视频 - Bilibili嵌入 -->
       <div class="hero-screenshot video-container">
@@ -744,6 +752,9 @@
         </a>
         <a href="/en/PotPlayer-windows-portable" class="btn btn-outline" data-platform="windows-portable" data-title="PotPlayer Windows 64-bit Portable Download | Support 4K/8K/3D Formats" data-description="PotPlayer Windows 64-bit Portable is a powerful multimedia player that can be used without installation, supports almost all video formats, provides smooth playback experience, rich customization options and comprehensive subtitle support, supporting 4K, 8K, 3D and network streaming playback, free to download and use.">
           <i class="fab fa-windows"></i> Windows 64-bit Portable
+        </a>
+        <a href="https://all.calipertools.com" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-tools"></i> All Tools
         </a>
       </div>
     </section>
@@ -874,9 +885,7 @@
         title: 'PotPlayer Windows 64-bit Download | Support 4K/8K/3D Formats',
         description: 'PotPlayer Windows 64-bit is a powerful multimedia player that supports almost all video formats, providing smooth playback experience, rich customization options and comprehensive subtitle support, supporting 4K, 8K, 3D and network streaming playback, free to download and use.',
         links: {
-          'Baidu Netdisk': 'https://pan.baidu.com/s/1fxJRtGe-KhFwBC3If1vU2Q?pwd=34mq',
-          'Quark Netdisk': 'https://pan.quark.cn/s/06b483d2eb21',
-          'Xunlei Netdisk': 'https://pan.xunlei.com/s/VOk2DeZgimxHJG4S9766W8vIA1?pwd=55g7#'
+          'TeraBox': 'https://1024terabox.com/s/13cPyDFMw_EEShvBSoopnrg',
         }
       },
       'PotPlayer-windows-32': {
@@ -884,9 +893,7 @@
         title: 'PotPlayer Windows 32-bit Download | Support 4K/8K/3D Formats',
         description: 'PotPlayer Windows 32-bit is a powerful multimedia player that supports almost all video formats, providing smooth playback experience, rich customization options and comprehensive subtitle support, supporting 4K, 8K, 3D and network streaming playback, free to download and use.',
         links: {
-          'Baidu Netdisk': 'https://pan.baidu.com/s/1kbzILExVlyGXvIVVzfTZGw?pwd=x3jy',
-          'Quark Netdisk': 'https://pan.quark.cn/s/77b86d7e7e38',
-          'Xunlei Netdisk': 'https://pan.xunlei.com/s/VOk2DaFJ4GoWiIfA2TUz8Z26A1?pwd=zb3g#'
+          'TeraBox': 'https://1024terabox.com/s/1zFifOMJTbaYkhMpja9fETA',
         }
       },
       'PotPlayer-windows-portable': {
@@ -894,9 +901,7 @@
         title: 'PotPlayer Windows 64-bit Portable Download | Support 4K/8K/3D Formats',
         description: 'PotPlayer Windows 64-bit Portable is a powerful multimedia player that can be used without installation, supports almost all video formats, providing smooth playback experience, rich customization options and comprehensive subtitle support, supporting 4K, 8K, 3D and network streaming playback, free to download and use.',
         links: {
-          'Baidu Netdisk': 'https://pan.baidu.com/s/1iT9-Js64C_59SudLqfwWXg?pwd=tq6v',
-          'Quark Netdisk': 'https://pan.quark.cn/s/c162629e2c7c',
-          'Xunlei Netdisk': 'https://pan.xunlei.com/s/VOk2DO7lowfKpS3bPJG3CATDA1?pwd=sk43#'
+          'TeraBox': 'https://1024terabox.com/s/1-qbE3optipMaJ8cZY7Kklw',
         }
       }
     };
@@ -996,6 +1001,11 @@
     // 为每个下载按钮添加点击事件
     downloadButtons.forEach(button => {
       button.addEventListener('click', function(e) {
+        // 检查是否是"所有工具"按钮，如果是则不阻止默认行为
+        if (this.getAttribute('href') === 'https://all.calipertools.com') {
+          return; // 直接返回，不阻止默认行为
+        }
+        
         // 阻止默认行为，防止页面跳转
         e.preventDefault();
         
