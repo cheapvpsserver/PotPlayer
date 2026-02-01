@@ -13,6 +13,34 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../images/favicon.png">
     <!-- 引入Font Awesome图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+     // 1. Disable right-click menu
+     document.addEventListener('contextmenu', function(e) {
+         e.preventDefault();
+         alert('Right-click menu is disabled');
+     });
+
+     // 2. Disable text selection
+     document.addEventListener('selectstart', function(e) {
+         e.preventDefault();
+     });
+
+     // 3. Disable copy shortcuts
+     document.addEventListener('keydown', function(e) {
+         if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'u' || e.key === 's' || e.key === 'a')) {
+             e.preventDefault();
+             alert('Copy function is disabled');
+         }
+     });
+
+     // 4. Prevent opening developer tools via F12
+     document.addEventListener('keydown', function(e) {
+         if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+             e.preventDefault();
+             alert('Developer tools are disabled');
+         }
+     });
+ </script>
     <style>
     /* 基础样式重置 */
     * {

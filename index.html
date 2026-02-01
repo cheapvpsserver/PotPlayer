@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PotPlayer中文版 - 高清视频播放器下载 | 支持4K/8K/3D格式</title>
+    <title>PotPlayer - 强大的多媒体播放器 | 支持4K/8K/3D格式</title>
     <!-- 网站描述 -->
     <meta name="description" content="PotPlayer是一款功能强大的多媒体播放器，支持几乎所有视频格式，提供流畅的播放体验、丰富的自定义选项和全面的字幕支持，支持4K、8K、3D和网络流媒体播放，免费下载使用。">
     <!-- 网站图标 -->
@@ -13,6 +13,34 @@
     <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.png">
     <!-- 引入Font Awesome图标库 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+     // 1. 禁用右键菜单
+     document.addEventListener('contextmenu', function(e) {
+         e.preventDefault();
+         alert('右键菜单已禁用');
+     });
+
+     // 2. 禁用文本选择
+     document.addEventListener('selectstart', function(e) {
+         e.preventDefault();
+     });
+
+     // 3. 禁用复制快捷键
+     document.addEventListener('keydown', function(e) {
+         if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'u' || e.key === 's' || e.key === 'a')) {
+             e.preventDefault();
+             alert('复制功能已禁用');
+         }
+     });
+
+     // 4. 防止通过F12打开开发者工具
+     document.addEventListener('keydown', function(e) {
+         if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+             e.preventDefault();
+             alert('开发者工具已禁用');
+         }
+     });
+ </script>
     <style>
     /* 基础样式重置 */
     * {
